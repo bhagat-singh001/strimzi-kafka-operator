@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 
 RESULTS_PATH=${1}
 TEST_CASE=${2}
