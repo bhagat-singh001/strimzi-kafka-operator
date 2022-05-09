@@ -61,9 +61,22 @@ pipeline {
                     env.TEST_GROUPS = params.TEST_GROUPS
                     env.ENV_VARS = params.ENV_VARS
                     env.EXCLUDE_GROUPS = DEFAULT_EXCLUDED_GROUPS
+                    
+                    println("#############TEST_CASE: ${env.TEST_CASE}") 
+                    println("#############TEST_GROUPS: ${env.TEST_GROUPS}")
+                    println("#############EXCLUDE_GROUPS: ${env.EXCLUDE_GROUPS}")
+                    println("#############ENV_VARS: ${env.ENV_VARS}")
+                    
+                    println("#############Before ghprbCommentBody.testcase check...")
                     if (env.ghprbCommentBody.contains('testcase=')) {
                         env.TEST_CASE = env.ghprbCommentBody.split('testcase=')[1].split(/\s/)[0]
                     }
+                    
+                    println("#############After ghprbCommentBody.testcase check...")
+                    
+                    // if (env.ghprbCommentBody.contains('testcase=')) {
+                    //    env.TEST_CASE = env.ghprbCommentBody.split('testcase=')[1].split(/\s/)[0]
+                    //}
                     println("TEST_CASE: ${env.TEST_CASE}")
 
                     if (env.ghprbCommentBody.contains('groups=')) {
