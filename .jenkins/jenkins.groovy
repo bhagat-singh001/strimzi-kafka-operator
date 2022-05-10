@@ -1,6 +1,8 @@
 
 def setupKubernetes(String arch = "amd64") {
     if ("${arch}".contains("s390x") || "${arch}".contains("ppc64le")) {
+        sh(script: "echo arch = ${arch}")
+        sh(script: "echo workspace = ${workspace}")
         sh(script: "${workspace}/.azure/scripts/setup-kubernetes.sh ${arch}")
     } else {
         // set SElinux to permisive mode
