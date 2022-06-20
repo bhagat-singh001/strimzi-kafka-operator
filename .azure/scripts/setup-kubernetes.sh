@@ -60,6 +60,11 @@ if [ "$TEST_CLUSTER" = "minikube" ]; then
     mkdir $HOME/.kube || true
     touch $HOME/.kube/config
 
+    // Temp. adding docker credentials
+    echo "uid = "
+    id
+    echo faraday123 | docker login -u abhijman --password-stdin
+
     if [ "$ARCH" = "s390x" ] || [ "$ARCH" = "ppc64le" ]; then
         docker run -d -p 5000:5000 --name ${ARCH}-registry ${ARCH}/registry:2.8.0-beta.1
     else
