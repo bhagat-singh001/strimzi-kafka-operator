@@ -60,7 +60,7 @@ if [ "$TEST_CLUSTER" = "minikube" ]; then
     mkdir $HOME/.kube || true
     touch $HOME/.kube/config
 
-    // Temp. adding docker credentials
+    # Temp. adding docker credentials
     echo "uid = "
     id
     echo faraday123 | docker login -u abhijman --password-stdin
