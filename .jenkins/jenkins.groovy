@@ -39,7 +39,7 @@ def buildStrimziImages() {
     // Testing with temporarily add/remove of '-DskipTests' flag
     sh(script: """
         eval \$(minikube docker-env)
-        MVN_ARGS='-Dsurefire.rerunFailingTestsCount=5 -Dfailsafe.rerunFailingTestsCount=2' make all
+        MVN_ARGS='-DskipTests -Dsurefire.rerunFailingTestsCount=5 -Dfailsafe.rerunFailingTestsCount=2' make all
     """)
 }
 
